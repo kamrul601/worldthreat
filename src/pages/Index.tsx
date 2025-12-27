@@ -2,10 +2,15 @@ import Header from "@/components/Header";
 import ArticleCard from "@/components/ArticleCard";
 import HeroSection from "@/components/HeroSection";
 import IntroSection from "@/components/IntroSection";
+import { getAllPosts } from "@/lib/posts";
 import { articles } from "@/data/articles";
 
 const Index = () => {
-  const featuredArticles = articles.slice(0, 6);
+  // Get markdown posts
+  const markdownPosts = getAllPosts();
+  
+  // Use markdown posts if available, otherwise fall back to legacy articles
+  const hasMarkdownPosts = markdownPosts.length > 0;
 
   return (
     <div className="min-h-screen bg-background animate-fade-in">
@@ -28,11 +33,29 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredArticles.map((article, index) => (
-              <div key={article.id} className={`animate-slide-up stagger-${Math.min(index + 1, 6)}`}>
-                <ArticleCard {...article} size="small" />
-              </div>
-            ))}
+            {hasMarkdownPosts ? (
+              // Render markdown posts
+              markdownPosts.slice(0, 6).map((post, index) => (
+                <div key={post.slug} className={`animate-slide-up stagger-${Math.min(index + 1, 6)}`}>
+                  <ArticleCard
+                    id={post.slug}
+                    title={post.title}
+                    category={post.category}
+                    date={post.date}
+                    image={post.featuredImage}
+                    size="small"
+                    isMarkdownPost
+                  />
+                </div>
+              ))
+            ) : (
+              // Fallback to legacy articles
+              articles.slice(0, 6).map((article, index) => (
+                <div key={article.id} className={`animate-slide-up stagger-${Math.min(index + 1, 6)}`}>
+                  <ArticleCard {...article} size="small" />
+                </div>
+              ))
+            )}
           </div>
         </section>
 
