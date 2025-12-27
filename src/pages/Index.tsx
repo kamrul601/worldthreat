@@ -1,79 +1,97 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ArticleCard from "@/components/ArticleCard";
-import HeroSection from "@/components/HeroSection";
-import IntroSection from "@/components/IntroSection";
+import NewsCard from "@/components/NewsCard";
 import { getAllPosts } from "@/lib/posts";
 import { articles } from "@/data/articles";
 
 const Index = () => {
-  // Get markdown posts
   const markdownPosts = getAllPosts();
-  
-  // Use markdown posts if available, otherwise fall back to legacy articles
   const hasMarkdownPosts = markdownPosts.length > 0;
+  
+  const allPosts = hasMarkdownPosts 
+    ? markdownPosts.map(post => ({
+        id: post.slug,
+        title: post.title,
+        category: post.category,
+        date: post.date,
+        image: post.featuredImage,
+        isMarkdownPost: true
+      }))
+    : articles.map(article => ({
+        id: article.id,
+        title: article.title,
+        category: article.category,
+        date: article.date,
+        image: article.image,
+        isMarkdownPost: false
+      }));
+
+  const featuredPost = allPosts[0];
+  const secondaryPosts = allPosts.slice(1, 3);
+  const remainingPosts = allPosts.slice(3);
 
   return (
-    <div className="min-h-screen bg-background animate-fade-in">
+    <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Hero Section */}
-        <HeroSection />
-
-        {/* Intro Section */}
-        <IntroSection />
-
-        {/* Featured Articles Grid */}
-        <section id="articles" className="py-12">
-          <div className="flex items-center justify-between mb-12 animate-slide-up">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Featured Articles</h2>
-            <a href="#all" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors px-4 py-2 rounded-full hover:bg-muted/60">
-              View all →
-            </a>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {/* Top Headlines Section */}
+        <section className="border-b border-border pb-8 mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <h1 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+              Latest Headlines
+            </h1>
+            <span className="text-xs text-muted-foreground">
+              {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {hasMarkdownPosts ? (
-              // Render markdown posts
-              markdownPosts.slice(0, 6).map((post, index) => (
-                <div key={post.slug} className={`animate-slide-up stagger-${Math.min(index + 1, 6)}`}>
-                  <ArticleCard
-                    id={post.slug}
-                    title={post.title}
-                    category={post.category}
-                    date={post.date}
-                    image={post.featuredImage}
-                    size="small"
-                    isMarkdownPost
-                  />
-                </div>
-              ))
-            ) : (
-              // Fallback to legacy articles
-              articles.slice(0, 6).map((article, index) => (
-                <div key={article.id} className={`animate-slide-up stagger-${Math.min(index + 1, 6)}`}>
-                  <ArticleCard {...article} size="small" />
-                </div>
-              ))
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            {/* Featured Article */}
+            {featuredPost && (
+              <div className="lg:col-span-2">
+                <NewsCard {...featuredPost} variant="featured" />
+              </div>
             )}
+
+            {/* Secondary Articles */}
+            <div className="space-y-6">
+              {secondaryPosts.map((post) => (
+                <NewsCard key={post.id} {...post} variant="standard" />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* News Grid */}
+        <section className="py-6">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+              More Stories
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {remainingPosts.map((post) => (
+              <NewsCard key={post.id} {...post} variant="standard" />
+            ))}
           </div>
         </section>
 
         {/* Newsletter Section */}
-        <section className="my-20 rounded-[2.5rem] bg-card p-12 md:p-16 text-center animate-scale-in">
-          <div className="max-w-2xl mx-auto space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Stay ahead of threats.</h2>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Get the latest cyber security insights, AI tool comparisons, and tech news delivered to your inbox.
+        <section className="my-12 border-t border-b border-border py-10">
+          <div className="max-w-2xl mx-auto text-center space-y-4">
+            <h2 className="text-2xl font-bold">Stay Informed</h2>
+            <p className="text-muted-foreground">
+              Get the latest cyber security insights and AI news delivered to your inbox.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 px-6 py-4 rounded-full border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring transition-all"
+                className="flex-1 px-4 py-2.5 rounded-sm border border-input bg-background text-sm focus:outline-none focus:ring-1 focus:ring-ring"
               />
-              <button className="px-10 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 hover:scale-105 transition-all">
+              <button className="px-6 py-2.5 rounded-sm bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
                 Subscribe
               </button>
             </div>
