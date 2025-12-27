@@ -8,97 +8,95 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Warm, sophisticated palette inspired by the design */
-    --background: 36 44% 96%;
-    --foreground: 0 0% 18%;
+    /* Tech-focused, future-oriented palette */
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
 
-    --card: 33 40% 94%;
-    --card-foreground: 0 0% 18%;
+    --card: 220 15% 95%;
+    --card-foreground: 220 20% 10%;
 
-    --popover: 36 44% 96%;
-    --popover-foreground: 0 0% 18%;
+    --popover: 220 20% 97%;
+    --popover-foreground: 220 20% 10%;
 
-    --primary: 0 0% 18%;
-    --primary-foreground: 36 44% 96%;
+    --primary: 200 100% 45%;
+    --primary-foreground: 220 20% 98%;
 
-    --secondary: 25 30% 70%;
-    --secondary-foreground: 0 0% 18%;
+    --secondary: 220 15% 85%;
+    --secondary-foreground: 220 20% 10%;
 
-    --muted: 33 30% 88%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 140 20% 50%;
-    --accent-foreground: 36 44% 96%;
+    --accent: 160 70% 40%;
+    --accent-foreground: 220 20% 98%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 36 44% 96%;
+    --destructive-foreground: 220 20% 98%;
 
-    --border: 33 25% 85%;
-    --input: 33 25% 85%;
-    --ring: 0 0% 18%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 200 100% 45%;
 
-    --radius: 1rem;
+    --radius: 0.75rem;
 
-    /* Custom design tokens */
-    --tag-financing: 210 50% 75%;
-    --tag-lifestyle: 140 20% 70%;
-    --tag-community: 25 35% 60%;
-    --tag-wellness: 280 30% 75%;
-    --tag-travel: 195 50% 70%;
-    --tag-creativity: 330 40% 75%;
-    --tag-growth: 50 45% 70%;
+    /* Custom design tokens - cyber/tech themed */
+    --tag-cyber: 200 100% 70%;
+    --tag-ai: 280 70% 70%;
+    --tag-future: 160 70% 60%;
+    --tag-tech: 220 70% 70%;
+    --tag-security: 0 70% 65%;
+    --tag-tools: 45 80% 65%;
 
     /* Polish design tokens */
-    --cream: 40 40% 90%;
-    --cream-foreground: 0 0% 18%;
-    --surface-elevated: 36 44% 98%;
-    --shadow-soft: 0 0% 0%;
+    --cream: 220 15% 92%;
+    --cream-foreground: 220 20% 10%;
+    --surface-elevated: 220 20% 99%;
+    --shadow-soft: 220 50% 10%;
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 0 0% 10%;
-    --foreground: 36 44% 96%;
+    --background: 220 25% 8%;
+    --foreground: 220 15% 95%;
 
-    --card: 0 0% 14%;
-    --card-foreground: 36 44% 96%;
+    --card: 220 25% 12%;
+    --card-foreground: 220 15% 95%;
 
-    --popover: 0 0% 10%;
-    --popover-foreground: 36 44% 96%;
+    --popover: 220 25% 8%;
+    --popover-foreground: 220 15% 95%;
 
-    --primary: 36 44% 96%;
-    --primary-foreground: 0 0% 18%;
+    --primary: 200 100% 50%;
+    --primary-foreground: 220 25% 5%;
 
-    --secondary: 25 15% 30%;
-    --secondary-foreground: 36 44% 96%;
+    --secondary: 220 20% 20%;
+    --secondary-foreground: 220 15% 95%;
 
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 60%;
 
-    --accent: 140 20% 45%;
-    --accent-foreground: 36 44% 96%;
+    --accent: 160 70% 45%;
+    --accent-foreground: 220 25% 5%;
 
     --destructive: 0 62% 50%;
-    --destructive-foreground: 36 44% 96%;
+    --destructive-foreground: 220 15% 95%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 36 44% 96%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 200 100% 50%;
 
-    /* Dark mode tag colors */
-    --tag-financing: 210 40% 45%;
-    --tag-lifestyle: 140 20% 40%;
-    --tag-community: 25 30% 40%;
-    --tag-wellness: 280 25% 45%;
-    --tag-travel: 195 40% 45%;
-    --tag-creativity: 330 35% 45%;
-    --tag-growth: 50 40% 45%;
+    /* Dark mode tag colors - cyber/tech themed */
+    --tag-cyber: 200 80% 50%;
+    --tag-ai: 280 60% 55%;
+    --tag-future: 160 60% 45%;
+    --tag-tech: 220 60% 55%;
+    --tag-security: 0 60% 50%;
+    --tag-tools: 45 70% 50%;
 
     /* Dark mode polish tokens */
-    --cream: 40 20% 25%;
-    --cream-foreground: 36 44% 96%;
-    --surface-elevated: 0 0% 16%;
-    --shadow-soft: 0 0% 0%;
+    --cream: 220 20% 18%;
+    --cream-foreground: 220 15% 95%;
+    --surface-elevated: 220 25% 14%;
+    --shadow-soft: 220 50% 5%;
   }
 }
 
@@ -235,31 +233,27 @@ All colors MUST be HSL.
     animation-fill-mode: forwards;
   }
 
-  .tag-financing {
-    @apply bg-[hsl(var(--tag-financing))] text-primary;
+  .tag-cyber {
+    @apply bg-[hsl(var(--tag-cyber))] text-foreground;
   }
 
-  .tag-lifestyle {
-    @apply bg-[hsl(var(--tag-lifestyle))] text-primary;
+  .tag-ai {
+    @apply bg-[hsl(var(--tag-ai))] text-foreground;
   }
 
-  .tag-community {
-    @apply bg-[hsl(var(--tag-community))] text-primary;
+  .tag-future {
+    @apply bg-[hsl(var(--tag-future))] text-foreground;
   }
 
-  .tag-wellness {
-    @apply bg-[hsl(var(--tag-wellness))] text-primary;
+  .tag-tech {
+    @apply bg-[hsl(var(--tag-tech))] text-foreground;
   }
 
-  .tag-travel {
-    @apply bg-[hsl(var(--tag-travel))] text-primary;
+  .tag-security {
+    @apply bg-[hsl(var(--tag-security))] text-foreground;
   }
 
-  .tag-creativity {
-    @apply bg-[hsl(var(--tag-creativity))] text-primary;
-  }
-
-  .tag-growth {
-    @apply bg-[hsl(var(--tag-growth))] text-primary;
+  .tag-tools {
+    @apply bg-[hsl(var(--tag-tools))] text-foreground;
   }
 }
