@@ -6,8 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Article from "./pages/Article";
 import BlogPost from "./pages/BlogPost";
-import Creativity from "./pages/Creativity";
-import Growth from "./pages/Growth";
+import CyberSecurity from "./pages/CyberSecurity";
+import AI from "./pages/AI";
+import News from "./pages/News";
 import About from "./pages/About";
 import Authors from "./pages/Authors";
 import Contact from "./pages/Contact";
@@ -28,8 +29,9 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/article/:id" element={<Article />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/creativity" element={<Creativity />} />
-          <Route path="/growth" element={<Growth />} />
+          <Route path="/cyber-security" element={<CyberSecurity />} />
+          <Route path="/ai" element={<AI />} />
+          <Route path="/news" element={<News />} />
           <Route path="/about" element={<About />} />
           <Route path="/authors" element={<Authors />} />
           <Route path="/contact" element={<Contact />} />
