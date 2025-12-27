@@ -132,13 +132,7 @@ const BlogPost = () => {
 
           {/* Article Content - Rendered from Markdown */}
           <div 
-            className="prose prose-lg max-w-none mb-16 animate-slide-up stagger-2 
-              prose-headings:font-bold prose-headings:tracking-tight
-              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4
-              prose-p:text-lg prose-p:leading-relaxed prose-p:text-muted-foreground
-              prose-ul:text-muted-foreground prose-li:text-muted-foreground
-              prose-strong:text-foreground
-              prose-hr:border-border prose-hr:my-8"
+            className="article-prose mb-16 animate-slide-up stagger-2"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
