@@ -5,7 +5,7 @@ import { getPostBySlug, getRelatedPosts } from "@/lib/posts";
 import { Facebook, Twitter, Linkedin, Link2, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-
+import DOMPurify from "dompurify";
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
@@ -133,7 +133,7 @@ const BlogPost = () => {
           {/* Article Content - Rendered from Markdown */}
           <div 
             className="article-prose mb-16 animate-slide-up stagger-2"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
           />
 
           {/* Tags */}
