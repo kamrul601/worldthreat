@@ -87,8 +87,6 @@ const Index = () => {
             <div>
               <h3 className="font-semibold mb-4">Explore</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/wellness" className="hover:text-accent transition-colors">Wellness</a></li>
-                <li><a href="/travel" className="hover:text-accent transition-colors">Travel</a></li>
                 <li><a href="/creativity" className="hover:text-accent transition-colors">Creativity</a></li>
                 <li><a href="/growth" className="hover:text-accent transition-colors">Growth</a></li>
               </ul>

@@ -52,11 +52,11 @@ const Header = () => {
             <a href="/#articles" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               Articles
             </a>
-            <a href="/wellness" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Wellness
+            <a href="/creativity" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Creativity
             </a>
-            <a href="/travel" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Travel
+            <a href="/growth" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Growth
             </a>
             <a href="/about" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               About
@@ -102,11 +102,11 @@ const Header = () => {
               <a href="/#articles" className="text-sm font-medium hover:text-accent transition-colors">
                 Articles
               </a>
-              <a href="/wellness" className="text-sm font-medium hover:text-accent transition-colors">
-                Wellness
+              <a href="/creativity" className="text-sm font-medium hover:text-accent transition-colors">
+                Creativity
               </a>
-              <a href="/travel" className="text-sm font-medium hover:text-accent transition-colors">
-                Travel
+              <a href="/growth" className="text-sm font-medium hover:text-accent transition-colors">
+                Growth
               </a>
               <a href="/about" className="text-sm font-medium hover:text-accent transition-colors">
                 About
