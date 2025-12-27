@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 import StyleGuide from "./pages/StyleGuide";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Disclaimer from "./pages/Disclaimer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,8 @@ const App = () => (
           <Route path="/style-guide" element={<StyleGuide />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/guides" element={<CyberSecurity />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
