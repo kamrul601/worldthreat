@@ -134,22 +134,20 @@ const Article = () => {
           </div>
 
           {/* Article Content */}
-          <div className="prose prose-lg max-w-none mb-16 animate-slide-up stagger-2">
-            <p className="text-lg leading-relaxed text-muted-foreground mb-8">
+          <div className="article-prose mb-16 animate-slide-up stagger-2">
+            <p className="article-lead">
               {article.content.introduction}
             </p>
 
             {article.content.sections.map((section, index) => (
               <div key={index} className="mb-10">
-                <h2 className="text-3xl font-bold mb-4">{section.heading}</h2>
-                <p className="text-lg leading-relaxed text-muted-foreground">
-                  {section.content}
-                </p>
+                <h2>{section.heading}</h2>
+                <p>{section.content}</p>
               </div>
             ))}
 
-            <div className="mt-12 p-6 rounded-2xl bg-muted border-l-4 border-accent">
-              <p className="text-lg leading-relaxed italic text-foreground">
+            <div className="mt-12 p-6 rounded bg-muted border-l-4 border-accent max-w-none">
+              <p className="italic text-foreground !mb-0">
                 {article.content.conclusion}
               </p>
             </div>
