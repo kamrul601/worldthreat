@@ -14,14 +14,14 @@ interface ArticleCardProps {
 const ArticleCard = ({ id, title, category, date, image, size = "small", isMarkdownPost = false }: ArticleCardProps) => {
   const getCategoryClass = (cat: string) => {
     const normalized = cat.toLowerCase();
+    if (normalized.includes("cyber") || normalized.includes("security")) return "tag-cyber";
+    if (normalized.includes("ai") || normalized.includes("artificial")) return "tag-ai";
+    if (normalized.includes("news")) return "tag-news";
+    if (normalized.includes("tech")) return "tag-tech";
     if (normalized.includes("financ")) return "tag-financing";
     if (normalized.includes("lifestyle")) return "tag-lifestyle";
     if (normalized.includes("community")) return "tag-community";
-    if (normalized.includes("wellness")) return "tag-wellness";
-    if (normalized.includes("travel")) return "tag-travel";
-    if (normalized.includes("creativ")) return "tag-creativity";
-    if (normalized.includes("growth")) return "tag-growth";
-    return "tag-lifestyle";
+    return "tag-tech";
   };
 
   const href = isMarkdownPost ? `/blog/${id}` : `/article/${id}`;
