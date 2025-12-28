@@ -1,40 +1,47 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: kamrul601/worldthreat
   branch: main
 
-# Media files will be stored in the repo under public/uploads
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
-# Content files will be stored in src/content/posts
 collections:
   - name: "posts"
     label: "Blog Posts"
     folder: "src/content/posts"
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     extension: "md"
     format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string", required: true }
-      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", required: true }
+
+      - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+
       - { label: "Author", name: "author", widget: "string", default: "worldthreat Team" }
-      - { label: "Author Avatar", name: "authorAvatar", widget: "image", required: false, default: "/uploads/default-avatar.png" }
-      - { label: "Author Bio", name: "authorBio", widget: "string", required: false, default: "Contributing writer" }
+
+      - { label: "Author Avatar", name: "authorAvatar", widget: "image", required: false }
+
+      - { label: "Author Bio", name: "authorBio", widget: "string", required: false }
+
       - label: "Category"
         name: "category"
         widget: "select"
         options:
-          - { label: "Cyber Security", value: "Cyber Security" }
-          - { label: "AI", value: "AI" }
-          - { label: "News", value: "News" }
-        required: true
+          - "Cyber Security"
+          - "AI"
+          - "News"
+
       - { label: "Featured Image", name: "featuredImage", widget: "image", required: true }
-      - { label: "Excerpt", name: "excerpt", widget: "text", required: true, hint: "A brief summary of the post (1-2 sentences)" }
+
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: true }
+
       - label: "Tags"
         name: "tags"
         widget: "list"
         required: false
-        hint: "Comma-separated tags"
-      - { label: "Read Time", name: "readTime", widget: "string", default: "5 min", required: false }
+
+      - { label: "Read Time", name: "readTime", widget: "string", default: "5 min" }
+
       - { label: "Body", name: "body", widget: "markdown", required: true }
