@@ -117,9 +117,9 @@ const Index = () => {
         {/* Newsletter Section */}
         <section className="my-12 border-t border-b border-border py-10">
           <div className="max-w-2xl mx-auto text-center space-y-4">
-            <h2 className="text-2xl font-bold">Stay Informed</h2>
+            <h2 className="text-2xl font-bold">Stay Updated on Cyber Security & AI</h2>
             <p className="text-muted-foreground">
-              Get the latest cyber security insights and AI news delivered to your inbox.
+              No spam. Only practical cyber threats, AI tools, and tech insights.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
