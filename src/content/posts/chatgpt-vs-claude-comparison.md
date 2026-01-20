@@ -5,7 +5,7 @@ author: "worldthreat Team"
 authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
 authorBio: "AI tools researcher and tech writer"
 category: "AI"
-featuredImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80"
+featuredImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&fm=webp"
 excerpt: "A detailed comparison of ChatGPT and Claude, two leading AI assistants, to help you choose the right tool for your specific needs."
 tags: ["ChatGPT", "Claude", "AI comparison", "productivity", "AI tools"]
 readTime: "8 min"
