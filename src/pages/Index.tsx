@@ -72,8 +72,8 @@ const Index = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {displayCyberPosts.slice(0, 2).map((post) => (
-              <NewsCard key={post.id} {...post} variant="featured" />
+            {displayCyberPosts.slice(0, 2).map((post, index) => (
+              <NewsCard key={post.id} {...post} variant="featured" priority={index === 0} />
             ))}
           </div>
         </section>
