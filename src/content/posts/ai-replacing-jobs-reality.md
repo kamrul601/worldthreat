@@ -2,7 +2,7 @@
 title: "Is AI Really Replacing Jobs? A Realistic Look at the Future of Work"
 date: "2025-01-08"
 author: "worldthreat Team"
-authorAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
+authorAvatar: "https://plus.unsplash.com/premium_photo-1676637656166-cb7b3a43b81a?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 authorBio: "Tech industry analyst and futurist"
 category: "News"
 featuredImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80&fm=webp"
