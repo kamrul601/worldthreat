@@ -1,11 +1,15 @@
 import { useParams, Navigate, Link } from "react-router-dom";
+import { useMemo } from "react";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import ArticleCard from "@/components/ArticleCard";
+import TableOfContents from "@/components/TableOfContents";
 import { getPostBySlug, getRelatedPosts } from "@/lib/posts";
-import { Facebook, Twitter, Linkedin, Link2, ArrowLeft } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Link2, ArrowLeft, Calendar, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import DOMPurify from "dompurify";
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
@@ -30,6 +34,31 @@ const BlogPost = () => {
     return "tag-tech";
   };
 
+  // Extract headings from content for TOC
+  const tocItems = useMemo(() => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(post.content, "text/html");
+    const headings = doc.querySelectorAll("h2, h3");
+    return Array.from(headings).map((heading, index) => {
+      const id = `heading-${index}`;
+      return {
+        id,
+        title: heading.textContent || "",
+      };
+    });
+  }, [post.content]);
+
+  // Add IDs to headings in content
+  const contentWithIds = useMemo(() => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(post.content, "text/html");
+    const headings = doc.querySelectorAll("h2, h3");
+    headings.forEach((heading, index) => {
+      heading.id = `heading-${index}`;
+    });
+    return doc.body.innerHTML;
+  }, [post.content]);
+
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
@@ -39,7 +68,7 @@ const BlogPost = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to articles
@@ -56,42 +85,43 @@ const BlogPost = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
         </div>
 
-        <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 relative z-10">
+        <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 relative z-10">
           {/* Article Header */}
-          <div className="mb-12 animate-slide-up">
+          <header className="mb-12 animate-slide-up">
             <div className="flex items-center gap-3 mb-6">
               <span className={`px-4 py-2 rounded-full text-sm font-medium ${getCategoryClass(post.category)}`}>
                 {post.category}
               </span>
-              <span className="text-sm text-muted-foreground">{post.date}</span>
-              <span className="text-sm text-muted-foreground">•</span>
               <span className="text-sm text-muted-foreground">{post.readTime} read</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
               {post.title}
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               {post.excerpt}
             </p>
 
-            {/* Author Info */}
-            <div className="flex items-center justify-between border-t border-b border-border py-6">
-              <div className="flex items-center gap-4">
-                <img
-                  src={post.authorAvatar}
-                  alt={post.author}
-                  className="w-14 h-14 rounded-full object-cover"
-                />
+            {/* Author & Date Info */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 border-t border-b border-border">
+              <div className="flex items-center gap-3">
+                <User className="w-5 h-5 text-muted-foreground" />
                 <div>
-                  <p className="font-semibold">{post.author}</p>
-                  <p className="text-sm text-muted-foreground">{post.authorBio}</p>
+                  <p className="font-semibold text-foreground">WorldThreat</p>
+                  <p className="text-sm text-muted-foreground">Editorial Team</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Calendar className="w-5 h-5 text-muted-foreground" />
+                <div>
+                  <p className="font-semibold text-foreground">{post.date}</p>
+                  <p className="text-sm text-muted-foreground">Published</p>
                 </div>
               </div>
 
               {/* Share Buttons */}
-              <div className="hidden md:flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-2 ml-auto">
                 <button
                   onClick={handleCopyLink}
                   className="w-10 h-10 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center"
@@ -128,12 +158,15 @@ const BlogPost = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </header>
+
+          {/* Table of Contents */}
+          <TableOfContents items={tocItems} />
 
           {/* Article Content - Rendered from Markdown */}
           <div 
             className="article-prose mb-16 animate-slide-up stagger-2"
-            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(contentWithIds) }}
           />
 
           {/* Tags */}
@@ -183,7 +216,7 @@ const BlogPost = () => {
           </div>
 
           {/* Newsletter CTA */}
-          <div className="mb-16 rounded-2xl bg-card p-8 md:p-12 text-center">
+          <div className="mb-16 rounded-2xl bg-card p-8 md:p-12 text-center border border-border">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">Enjoyed this article?</h3>
             <p className="text-muted-foreground mb-6">
               Subscribe to receive more insights like this directly in your inbox.
@@ -225,6 +258,8 @@ const BlogPost = () => {
           </section>
         )}
       </main>
+
+      <Footer />
     </div>
   );
 };
