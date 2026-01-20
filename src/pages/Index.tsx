@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import NewsCard from "@/components/NewsCard";
 import { getAllPosts } from "@/lib/posts";
 import { articles } from "@/data/articles";
+import { Shield, Brain, Newspaper } from "lucide-react";
 
 const Index = () => {
   const markdownPosts = getAllPosts();
@@ -26,53 +27,88 @@ const Index = () => {
         isMarkdownPost: false
       }));
 
-  const featuredPost = allPosts[0];
-  const secondaryPosts = allPosts.slice(1, 3);
-  const remainingPosts = allPosts.slice(3);
+  // Categorize posts for sections
+  const cyberSecurityPosts = allPosts.filter(p => 
+    p.category?.toLowerCase().includes('cyber') || 
+    p.category?.toLowerCase().includes('security')
+  );
+  const aiPosts = allPosts.filter(p => 
+    p.category?.toLowerCase().includes('ai') || 
+    p.category?.toLowerCase().includes('artificial')
+  );
+  const techNewsPosts = allPosts.filter(p => 
+    !cyberSecurityPosts.includes(p) && !aiPosts.includes(p)
+  );
+
+  // For display, use all posts if no specific categories exist
+  const displayCyberPosts = cyberSecurityPosts.length > 0 ? cyberSecurityPosts : allPosts.slice(0, 2);
+  const displayAiPosts = aiPosts.length > 0 ? aiPosts : allPosts.slice(2, 4);
+  const displayTechPosts = techNewsPosts.length > 0 ? techNewsPosts.slice(0, 4) : allPosts.slice(4, 8);
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* Top Headlines Section */}
-        <section className="border-b border-border pb-8 mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <h1 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-              Latest Headlines
-            </h1>
-            <span className="text-xs text-muted-foreground">
-              {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-            </span>
-          </div>
+        {/* Hero Section */}
+        <section className="py-12 md:py-20 text-center border-b border-border mb-12">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight mb-6 animate-slide-down">
+            Cyber Security, AI & Technology — Explained for Everyone
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up stagger-1">
+            Practical guides, real-world cyber threats, and AI insights without the hype.
+          </p>
+        </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-            {/* Featured Article */}
-            {featuredPost && (
-              <div className="lg:col-span-2">
-                <NewsCard {...featuredPost} variant="featured" />
-              </div>
-            )}
-
-            {/* Secondary Articles */}
-            <div className="space-y-6">
-              {secondaryPosts.map((post) => (
-                <NewsCard key={post.id} {...post} variant="standard" />
-              ))}
+        {/* Section 1: Cyber Security */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center">
+              <Shield className="w-5 h-5 text-destructive" />
             </div>
+            <div>
+              <h2 className="text-xl md:text-2xl font-bold">Cyber Security</h2>
+              <p className="text-sm text-muted-foreground">Threats, protection, and digital safety</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {displayCyberPosts.slice(0, 2).map((post) => (
+              <NewsCard key={post.id} {...post} variant="featured" />
+            ))}
           </div>
         </section>
 
-        {/* News Grid */}
-        <section className="py-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-              More Stories
-            </h2>
+        {/* Section 2: Artificial Intelligence */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+              <Brain className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <h2 className="text-xl md:text-2xl font-bold">Artificial Intelligence</h2>
+              <p className="text-sm text-muted-foreground">AI tools, comparisons, and how it's changing work</p>
+            </div>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {displayAiPosts.slice(0, 2).map((post) => (
+              <NewsCard key={post.id} {...post} variant="featured" />
+            ))}
+          </div>
+        </section>
 
+        {/* Section 3: Tech News & Guides */}
+        <section className="mb-12">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+              <Newspaper className="w-5 h-5 text-accent-foreground" />
+            </div>
+            <div>
+              <h2 className="text-xl md:text-2xl font-bold">Tech News & Guides</h2>
+              <p className="text-sm text-muted-foreground">Latest updates and practical how-tos</p>
+            </div>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {remainingPosts.map((post) => (
+            {displayTechPosts.slice(0, 4).map((post) => (
               <NewsCard key={post.id} {...post} variant="standard" />
             ))}
           </div>
