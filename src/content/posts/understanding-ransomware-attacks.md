@@ -5,7 +5,7 @@ author: "worldthreat Team"
 authorAvatar: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&q=80"
 authorBio: "Cyber security analyst and threat researcher"
 category: "Cyber Security"
-featuredImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&q=80"
+featuredImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1600&q=80&fm=webp"
 excerpt: "Ransomware attacks have become one of the most devastating cyber threats facing individuals and organizations. Learn how they work and how to stay protected."
 tags: ["ransomware", "malware", "cyber security", "data protection"]
 readTime: "7 min"

@@ -5,7 +5,7 @@ author: "worldthreat Team"
 authorAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
 authorBio: "Tech industry analyst and futurist"
 category: "News"
-featuredImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1920&q=80"
+featuredImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80&fm=webp"
 excerpt: "Beyond the hype and fear, what does AI actually mean for employment? We examine the evidence and separate fact from fiction."
 tags: ["AI jobs", "future of work", "automation", "employment", "technology"]
 readTime: "6 min"
