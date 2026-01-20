@@ -210,9 +210,9 @@ const Article = () => {
 
           {/* Newsletter CTA */}
           <div className="mb-16 rounded-2xl bg-card p-8 md:p-12 text-center border border-border">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Enjoyed this article?</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Stay Updated on Cyber Security & AI</h3>
             <p className="text-muted-foreground mb-6">
-              Subscribe to receive more insights like this directly in your inbox.
+              No spam. Only practical cyber threats, AI tools, and tech insights.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
