@@ -10,7 +10,7 @@ const Footer = () => {
       { name: "Guides", path: "/guides" },
     ],
     about: [
-      { name: "About worldthreat", path: "/about" },
+      { name: "About WorldThreat", path: "/about" },
       { name: "Contact", path: "/contact" },
       { name: "Authors", path: "/authors" },
     ],
@@ -35,10 +35,10 @@ const Footer = () => {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <Shield className="w-4 h-4 text-primary-foreground" />
             </div>
-            <span className="font-mono font-bold text-xl">worldthreat</span>
+            <span className="font-mono font-bold text-xl">WorldThreat</span>
           </Link>
           <p className="text-sm text-muted-foreground max-w-sm">
-            Understanding cyber threats, comparing AI tools, and exploring the future of technology.
+            Practical Cyber Security, AI & Tech Explained Simply
           </p>
         </div>
 
@@ -109,7 +109,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 worldthreat. All rights reserved.
+            © 2026 WorldThreat. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a

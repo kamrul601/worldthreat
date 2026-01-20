@@ -25,7 +25,7 @@ const HeroSection = () => {
               Understand Cyber Threats. Choose the Right AI. Stay Ahead of the Future.
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-xl animate-slide-up stagger-1">
-              worldthreat explores cyber security risks, compares AI tools for specific tasks, and explains how artificial intelligence is reshaping jobs and technology.
+              WorldThreat explores cyber security risks, compares AI tools for specific tasks, and explains how artificial intelligence is reshaping jobs and technology.
             </p>
           </div>
 
