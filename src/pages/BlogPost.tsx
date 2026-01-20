@@ -80,6 +80,8 @@ const BlogPost = () => {
           <img
             src={post.featuredImage}
             alt={post.title}
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
