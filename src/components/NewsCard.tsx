@@ -8,9 +8,10 @@ interface NewsCardProps {
   image: string;
   isMarkdownPost?: boolean;
   variant?: "featured" | "standard" | "compact";
+  priority?: boolean;
 }
 
-const NewsCard = ({ id, title, category, date, image, isMarkdownPost = false, variant = "standard" }: NewsCardProps) => {
+const NewsCard = ({ id, title, category, date, image, isMarkdownPost = false, variant = "standard", priority = false }: NewsCardProps) => {
   const getCategoryClass = (cat: string) => {
     const normalized = cat.toLowerCase();
     if (normalized.includes("cyber") || normalized.includes("security")) return "text-[hsl(var(--tag-cyber))]";
@@ -29,8 +30,9 @@ const NewsCard = ({ id, title, category, date, image, isMarkdownPost = false, va
             <img
               src={image}
               alt={title}
-              loading="lazy"
+              loading={priority ? "eager" : "lazy"}
               decoding="async"
+              fetchPriority={priority ? "high" : undefined}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
           </div>
